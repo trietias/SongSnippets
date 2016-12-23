@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SongSnippets</string>
+    <string name="categories">Song Categories</string>
+    <string name="songs">Songs</string>
+    <string name="play_button">Play Button</string>
+    <string name="_1">1</string>
+    <string name="refresh_button">Refresh Button</string>
+    <string name="increase_interval">Increase Interval</string>
+    <string name="decrease_interval">Decrease Interval</string>
+    <string name="increase_score">increase score</string>
+</resources>
