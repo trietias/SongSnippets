@@ -13,25 +13,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="25dp">
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:text="@string/categories"
+            android:fontFamily="sans-serif-smallcaps"
             android:textColor="@color/text"
             android:id="@+id/textView" />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
         <Spinner
-            android:layout_width="wrap_content"
+            android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:id="@+id/categorySpinner" />
+    </LinearLayout>
+
+    <!-- Song Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song"
+            android:textColor="@color/text"
+            android:layout_gravity="center"
+            android:id="@+id/songTitle"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Artist"
+            android:layout_gravity="center"
+            android:id="@+id/artistName"
+            android:textColor="@color/text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:layout_gravity="center"
+            android:id="@+id/categoryName"
+            android:textColor="@color/text" />
     </LinearLayout>
 
     <!-- Play Button -->
@@ -40,7 +72,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_margin="15dp">
+        android:layout_marginTop="25dp">
         <ImageButton
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -48,6 +80,16 @@
             android:onClick="play"
             android:background="@drawable/play_button"
             android:contentDescription="@string/play_button" />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:id="@+id/refresh"
+            android:onClick="random"
+            android:contentDescription="@string/refresh_button"
+            android:layout_marginLeft="10dp"
+            android:text="next"
+            android:fontFamily="sans-serif-light"/>
     </LinearLayout>
 
     <!-- Seconds Selector -->
@@ -67,6 +109,7 @@
             android:layout_height="wrap_content"
             android:text="@string/_1"
             android:textSize="40sp"
+            android:fontFamily="sans-serif-light"
             android:id="@+id/intervalText"
             android:paddingRight="25dp"
             android:paddingLeft="25dp"/>
@@ -79,82 +122,65 @@
             android:contentDescription="@string/increase_interval" />
     </LinearLayout>
 
-    <!-- Song Info -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Song"
-            android:textColor="@color/text"
-            android:layout_gravity="center"
-            android:id="@+id/songTitle"
-            android:layout_marginTop="45dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Artist"
-            android:layout_gravity="center"
-            android:id="@+id/artistName"
-            android:textColor="@color/text" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            android:layout_gravity="center"
-            android:id="@+id/categoryName"
-            android:textColor="@color/text" />
-    </LinearLayout>
-
     <!-- Points -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/_1"
-            android:id="@+id/team1Points" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/_1"
-            android:id="@+id/team2Points" />
+
+
     </LinearLayout>
 
     <!-- Points Button -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="5">
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="75dp"
             android:id="@+id/team1Add"
             android:background="@drawable/round_btn"
             android:onClick="increaseScore"
             android:contentDescription="@string/increase_score"
+            android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:fontFamily="sans-serif-thin"
             android:text="+"
             android:textSize="30sp"
             android:textColor="@color/accent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:text="@string/_1"
+            android:textSize="25sp"
+            android:id="@+id/team1Points"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="|"
+            android:textSize="25sp"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="25dp"
+            android:text="@string/_1"
+            android:textSize="25sp"
+            android:id="@+id/team2Points"
+            android:layout_weight="1"/>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="45dp"
+            android:layout_height="75dp"
             android:id="@+id/team2Add"
             android:background="@drawable/round_btn"
             android:onClick="increaseScore"
             android:contentDescription="@string/increase_score"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:fontFamily="sans-serif-thin"
             android:text="+"
@@ -165,27 +191,20 @@
     <!-- Options -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3">
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/resetScore"
             android:onClick="resetScore"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/restart"
-            android:layout_weight="1"/>
-
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/refresh"
-            android:id="@+id/refresh"
-            android:layout_marginBottom="15dp"
-            android:onClick="random"
-            android:contentDescription="@string/refresh_button"
-            android:layout_weight="1"/>
+            android:background="@drawable/round_btn2"
+            android:fontFamily="sans-serif-thin"
+            android:text="reset"
+            android:textSize="21sp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="25dp"
+            android:layout_gravity="bottom"/>
     </LinearLayout>
 </LinearLayout>
