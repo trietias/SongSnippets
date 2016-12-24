@@ -6,7 +6,9 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -56,7 +58,19 @@ public class MainActivity extends AppCompatActivity {
         initialSetUp();
 
         categorySpinner = (Spinner)findViewById(R.id.categorySpinner);
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, R.layout.custom_center_spinner, categoryList) {
+            public View getView(int position, View convertView,ViewGroup parent) {
+                View v = super.getView(position, convertView, parent);
+                ((TextView) v).setGravity(Gravity.CENTER);
+                return v;
+            }
+
+            public View getDropDownView(int position, View convertView,ViewGroup parent) {
+                View v = super.getDropDownView(position, convertView,parent);
+                ((TextView) v).setGravity(Gravity.CENTER);
+                return v;
+            }
+        };
         categorySpinner.setAdapter(categoryAdapter);
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
