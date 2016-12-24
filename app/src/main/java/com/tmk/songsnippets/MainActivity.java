@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         }
         intervalTextView.setText(s);
         String artist = "";
-        String category = "Category: ";
+        String category = "";
         DBHandler handler = new DBHandler(this);
         songTitle = songList.get(songTracker);
         songChoice = handler.getResourceValue(songTitle);
