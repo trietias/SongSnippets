@@ -14,13 +14,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="15dp">
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-condensed"
             android:text="@string/categories"
-            android:fontFamily="sans-serif-smallcaps"
+            android:textSize="18sp"
             android:textColor="@color/text"
             android:id="@+id/textView" />
     </LinearLayout>
@@ -39,31 +40,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="15dp" >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Artist"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:id="@+id/artistName" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-smallcaps"
             android:text="Song"
+            android:textSize="25sp"
             android:textColor="@color/text"
             android:layout_gravity="center"
-            android:id="@+id/songTitle"
-            android:layout_marginTop="15dp" />
-
+            android:id="@+id/songTitle" />
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Artist"
-            android:layout_gravity="center"
-            android:id="@+id/artistName"
-            android:textColor="@color/text" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            android:layout_gravity="center"
-            android:id="@+id/categoryName"
-            android:textColor="@color/text" />
+            android:layout_height="0dp"
+            android:id="@+id/categoryName" />
     </LinearLayout>
 
     <!-- Play Button -->
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="45dp">
         <ImageButton
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -81,8 +81,8 @@
             android:background="@drawable/play_button"
             android:contentDescription="@string/play_button" />
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/round_btn"
             android:id="@+id/refresh"
             android:onClick="random"
@@ -96,10 +96,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="15dp">
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@drawable/backward"
             android:onClick="editInterval"
             android:id="@+id/backwardButton"
@@ -108,14 +109,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/_1"
-            android:textSize="40sp"
+            android:textSize="32sp"
             android:fontFamily="sans-serif-light"
             android:id="@+id/intervalText"
             android:paddingRight="25dp"
             android:paddingLeft="25dp"/>
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@drawable/forward"
             android:onClick="editInterval"
             android:id="@+id/forwardButton"
@@ -141,8 +142,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
             <Button
-                android:layout_width="75dp"
-                android:layout_height="95dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:id="@+id/team1Add"
                 android:background="@drawable/round_btn"
                 android:onClick="increaseScore"
@@ -159,6 +160,7 @@
                 android:paddingLeft="25dp"
                 android:text="@string/_1"
                 android:textSize="25sp"
+                android:textAlignment="center"
                 android:id="@+id/team1Points"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -181,11 +183,12 @@
                 android:paddingRight="25dp"
                 android:text="@string/_1"
                 android:textSize="25sp"
+                android:textAlignment="center"
                 android:id="@+id/team2Points"
                 android:layout_weight="1"/>
             <Button
-                android:layout_width="75dp"
-                android:layout_height="95dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:id="@+id/team2Add"
                 android:background="@drawable/round_btn"
                 android:onClick="increaseScore"
@@ -215,7 +218,7 @@
             android:textSize="21sp"
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="8dp"
             android:layout_gravity="bottom"/>
     </LinearLayout>
 </LinearLayout>
