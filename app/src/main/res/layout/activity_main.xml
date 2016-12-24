@@ -4,27 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.tmk.songsnippets.MainActivity">
+    tools:context="com.tmk.songsnippets.MainActivity"
+    android:weightSum="1"
+    android:background="@drawable/background">
+
+    <!-- Category Selection -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:gravity="center">
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:text="@string/categories"
-            android:id="@+id/textView"
-            android:layout_weight="1"/>
+            android:fontFamily=""
+            android:textColor="@color/text"
+            android:id="@+id/textView" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/categorySpinner"
-            android:gravity="center_horizontal"
-            android:layout_weight="2"/>
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
+    <!-- TO DELETE -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,6 +47,7 @@
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:text="@string/songs"
+            android:textColor="@color/text"
             android:id="@+id/textView2"
             android:layout_weight="1"/>
         <Spinner
@@ -44,6 +57,85 @@
             android:id="@+id/songSpinner"
             android:layout_weight="2"/>
     </LinearLayout>
+    <!-- END DELETE -->
+
+    <!-- Play Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="15dp">
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/play"
+            android:onClick="play"
+            android:background="@drawable/play_button"
+            android:contentDescription="@string/play_button" />
+    </LinearLayout>
+
+    <!-- Seconds Selector -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/backward"
+            android:onClick="editInterval"
+            android:id="@+id/backwardButton"
+            android:contentDescription="@string/decrease_interval" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_1"
+            android:textSize="40sp"
+            android:id="@+id/intervalText"
+            android:paddingRight="25dp"
+            android:paddingLeft="25dp"/>
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/forward"
+            android:onClick="editInterval"
+            android:id="@+id/forwardButton"
+            android:contentDescription="@string/increase_interval" />
+    </LinearLayout>
+
+    <!-- Song Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song"
+            android:textColor="@color/text"
+            android:layout_gravity="center"
+            android:id="@+id/songTitle"
+            android:layout_marginTop="45dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Artist"
+            android:layout_gravity="center"
+            android:id="@+id/artistName"
+            android:textColor="@color/text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:layout_gravity="center"
+            android:id="@+id/categoryName"
+            android:textColor="@color/text" />
+    </LinearLayout>
+
+    <!-- Points -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -63,6 +155,7 @@
             android:id="@+id/team2Points" />
     </LinearLayout>
 
+    <!-- Points Button -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,6 +178,8 @@
             android:contentDescription="@string/increase_score"
             android:layout_weight="1"/>
     </LinearLayout>
+
+    <!-- Options -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,70 +205,4 @@
             android:contentDescription="@string/refresh_button"
             android:layout_weight="1"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/backward"
-            android:onClick="editInterval"
-            android:id="@+id/backwardButton"
-            android:contentDescription="@string/decrease_interval" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/_1"
-            android:textSize="40sp"
-            android:id="@+id/intervalText"
-            android:paddingRight="25dp"
-            android:paddingLeft="25dp"/>
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/forward"
-            android:onClick="editInterval"
-            android:id="@+id/forwardButton"
-            android:contentDescription="@string/increase_interval" />
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/play"
-            android:onClick="play"
-            android:background="@drawable/play"
-            android:contentDescription="@string/play_button" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Song"
-            android:textColor="@color/colorBluish"
-            android:layout_gravity="center"
-            android:id="@+id/songTitle"
-            android:layout_marginTop="65dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Artist"
-            android:layout_gravity="center"
-            android:id="@+id/artistName"
-            android:textColor="@color/colorBluish" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            android:layout_gravity="center"
-            android:id="@+id/categoryName"
-            android:textColor="@color/colorBluish" />
-
-    </LinearLayout>
-
 </LinearLayout>

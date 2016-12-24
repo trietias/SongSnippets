@@ -1,6 +1,7 @@
 package com.tmk.songsnippets;
 
 import android.database.SQLException;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         songTitleTextView = (TextView) findViewById(R.id.songTitle);
         songArtistTextView = (TextView) findViewById(R.id.artistName);
         songCategoryTextView = (TextView) findViewById(R.id.categoryName);
+        Typeface dosis = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/Dosis-Regular.ttf");
+        Typeface dosis_bold = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/Dosis-Bold.ttf");
+        Typeface dosis_light = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/Dosis-Light.ttf");
         team1Score = (TextView) findViewById(R.id.team1Points);
         team1Score.setText("0");
         team2Score = (TextView) findViewById(R.id.team2Points);
