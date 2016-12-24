@@ -6,14 +6,15 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -57,7 +58,19 @@ public class MainActivity extends AppCompatActivity {
         initialSetUp();
 
         categorySpinner = (Spinner)findViewById(R.id.categorySpinner);
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, categoryList);
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, R.layout.custom_center_spinner, categoryList) {
+            public View getView(int position, View convertView,ViewGroup parent) {
+                View v = super.getView(position, convertView, parent);
+                ((TextView) v).setGravity(Gravity.CENTER);
+                return v;
+            }
+
+            public View getDropDownView(int position, View convertView,ViewGroup parent) {
+                View v = super.getDropDownView(position, convertView,parent);
+                ((TextView) v).setGravity(Gravity.CENTER);
+                return v;
+            }
+        };
         categorySpinner.setAdapter(categoryAdapter);
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -187,6 +200,9 @@ public class MainActivity extends AppCompatActivity {
         artist += handler.getArtist(songTitle);
         songArtistTextView.setText(artist);
         category += handler.getCategory(songTitle);
+        if(categorySpinner.getFirstVisiblePosition() > 0) {
+            category = "";
+        }
         songCategoryTextView.setText(category);
         handler.close();
     }
@@ -211,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         songTracker = rand;
+        previousSongs.push(songTracker);
         intervalTracker = 0;
         setUp();
     }
