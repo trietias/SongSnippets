@@ -2,9 +2,9 @@
 <resources>
     <color name="background">#646E68</color>
     <color name="text">#D7D9D7</color>
-    <color name="accent">#63264A</color>
+    <color name="accent">#63264A</color>>
     <color name="button">#50514F</color>
-    <color name="colorPrimary">#25FFFFFF</color>
+    <color name="colorPrimary">#35FFFFFF</color>
     <color name="colorPrimaryDark">#16425B</color>
     <color name="colorAccent">#E0C1B3</color>
 </resources>

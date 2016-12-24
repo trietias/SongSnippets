@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
             s = "0" + intervals[intervalTracker];
         }
         intervalTextView.setText(s);
-        String artist = "By: ";
+        String artist = "";
         String category = "Category: ";
         DBHandler handler = new DBHandler(this);
         songTitle = songList.get(songTracker);
