@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 DBHandler handler = new DBHandler(getBaseContext());
                 songList = handler.getCategoryData(categoryList.get(position));
                 handler.close();
+                setUp();
             }
 
             @Override
