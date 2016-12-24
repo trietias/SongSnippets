@@ -10,7 +10,7 @@
 
     <!-- Category Selection -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
@@ -24,15 +24,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/categorySpinner"
-            android:gravity="center_horizontal" />
+            android:id="@+id/categorySpinner" />
     </LinearLayout>
 
     <!-- Play Button -->

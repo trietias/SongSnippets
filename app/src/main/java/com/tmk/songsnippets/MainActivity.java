@@ -129,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         String s = Integer.toString(intervals[intervalTracker]);
+        if (intervals[intervalTracker] < 10) {
+            s = "0" + intervals[intervalTracker];
+        }
         intervalTextView.setText(s);
     }
 
@@ -163,6 +166,9 @@ public class MainActivity extends AppCompatActivity {
     public void setUp() {
         intervalTracker = 0;
         String s = Integer.toString(intervals[intervalTracker]);
+        if (intervals[intervalTracker] < 10) {
+            s = "0" + intervals[intervalTracker];
+        }
         intervalTextView.setText(s);
         String artist = "By: ";
         String category = "Category: ";
