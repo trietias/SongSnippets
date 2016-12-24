@@ -13,7 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer songController;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private int songTracker = 0;
     private List<String> categoryList;
     private List<String> songList;
+    private Stack<Integer> previousSongs = new Stack<Integer>();
     private Spinner categorySpinner;
     Integer team1 = 0;
     Integer team2 = 0;
@@ -61,7 +64,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 DBHandler handler = new DBHandler(getBaseContext());
                 songList = handler.getCategoryData(categoryList.get(position));
+                previousSongs.clear();
                 handler.close();
+                songTracker = 0;
+                previousSongs.push(songTracker);
                 setUp();
             }
 
@@ -197,6 +203,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void random(View view) {
         int rand = (int) Math.floor(Math.random()*songList.size());
+        if(songList.size() == previousSongs.size()) {
+            previousSongs.clear();
+        } else {
+            while (previousSongs.contains(rand)) {
+                rand = (int) Math.floor(Math.random()*songList.size());
+            }
+        }
         songTracker = rand;
         intervalTracker = 0;
         setUp();
