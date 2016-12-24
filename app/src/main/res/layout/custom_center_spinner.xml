@@ -3,7 +3,10 @@
     android:layout_height="fill_parent"
     android:layout_width="fill_parent"
     android:gravity="center"
-    android:textColor="#000000"
+    android:fontFamily="sans-serif-thin"
+    android:textColor="@color/text"
+    android:textSize="21sp"
     android:text="Sample Text"
+    android:textAlignment="center"
     android:paddingBottom="5dp"
     android:paddingTop="5dp" />

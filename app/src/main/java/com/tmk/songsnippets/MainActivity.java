@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         songTitleTextView = (TextView) findViewById(R.id.songTitle);
         songArtistTextView = (TextView) findViewById(R.id.artistName);
         songCategoryTextView = (TextView) findViewById(R.id.categoryName);
-        Typeface dosis = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/Dosis-Regular.ttf");
-        Typeface dosis_bold = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/Dosis-Bold.ttf");
-        Typeface dosis_light = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/Dosis-Light.ttf");
         team1Score = (TextView) findViewById(R.id.team1Points);
         team1Score.setText("0");
         team2Score = (TextView) findViewById(R.id.team2Points);
