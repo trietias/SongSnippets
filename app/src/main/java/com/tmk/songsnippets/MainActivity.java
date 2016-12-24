@@ -6,11 +6,9 @@ import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
     final private Integer[] intervals = new Integer[]{1,2,3,5,10,15};
     final private Integer[] points = new Integer[]{1000,800,600,400,200,100};
     private int intervalTracker = 0;
+    private int songTracker = 0;
     private List<String> categoryList;
     private List<String> songList;
     private Spinner categorySpinner;
-    private Spinner songSpinner;
     Integer team1 = 0;
     Integer team2 = 0;
     TextView intervalTextView;
@@ -36,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     TextView team2Score;
     String songChoice = "";
     String songTitle;
-    String songArtist;
     int songResource = 0;
 
     @Override
@@ -65,27 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 DBHandler handler = new DBHandler(getBaseContext());
                 songList = handler.getCategoryData(categoryList.get(position));
                 handler.close();
-                ArrayAdapter<String> songAdapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, songList);
-                songSpinner.setAdapter(songAdapter);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        songSpinner = (Spinner)findViewById(R.id.songSpinner);
-        ArrayAdapter<String> songAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, songList);
-        songSpinner.setAdapter(songAdapter);
-        songSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                setUp();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -187,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         String artist = "By: ";
         String category = "Category: ";
         DBHandler handler = new DBHandler(this);
-        songTitle = songSpinner.getSelectedItem().toString();
+        songTitle = songList.get(songTracker);
         songChoice = handler.getResourceValue(songTitle);
         songResource = getResourceId(songChoice, "raw", getPackageName());
         songTitleTextView.setText(songTitle);
@@ -210,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void random(View view) {
         int rand = (int) Math.floor(Math.random()*songList.size());
-        songSpinner.setSelection(rand);
+        songTracker = rand;
         intervalTracker = 0;
         setUp();
     }
