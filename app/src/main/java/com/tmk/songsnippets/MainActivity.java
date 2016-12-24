@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -187,6 +186,9 @@ public class MainActivity extends AppCompatActivity {
         artist += handler.getArtist(songTitle);
         songArtistTextView.setText(artist);
         category += handler.getCategory(songTitle);
+        if(categorySpinner.getFirstVisiblePosition() > 0) {
+            category = "";
+        }
         songCategoryTextView.setText(category);
         handler.close();
     }
@@ -211,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         songTracker = rand;
+        previousSongs.push(songTracker);
         intervalTracker = 0;
         setUp();
     }
