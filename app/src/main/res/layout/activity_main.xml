@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:text="@string/categories"
-            android:fontFamily=""
             android:textColor="@color/text"
             android:id="@+id/textView" />
     </LinearLayout>
@@ -161,22 +160,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="3">
-        <ImageButton
+        <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/team1Add"
-            android:background="@drawable/increase_score"
+            android:background="@drawable/round_btn"
             android:onClick="increaseScore"
             android:contentDescription="@string/increase_score"
-            android:layout_weight="1"/>
-        <ImageButton
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-thin"
+            android:text="+"
+            android:textSize="30sp"
+            android:textColor="@color/accent" />
+        <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/team2Add"
-            android:background="@drawable/increase_score"
+            android:background="@drawable/round_btn"
             android:onClick="increaseScore"
             android:contentDescription="@string/increase_score"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-thin"
+            android:text="+"
+            android:textSize="30sp"
+            android:textColor="@color/accent"/>
     </LinearLayout>
 
     <!-- Options -->
