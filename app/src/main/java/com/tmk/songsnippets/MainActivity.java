@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private List<String> songList;
     private Stack<Integer> previousSongs = new Stack<Integer>();
     private Spinner categorySpinner;
+    private ArrayAdapter<String> categoryAdapter;
     Integer team1 = 0;
     Integer team2 = 0;
     TextView intervalTextView;
@@ -55,30 +56,15 @@ public class MainActivity extends AppCompatActivity {
         initialSetUp();
 
         categorySpinner = (Spinner)findViewById(R.id.categorySpinner);
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(this, R.layout.custom_center_spinner, categoryList) {
-            public View getView(int position, View convertView,ViewGroup parent) {
-                View v = super.getView(position, convertView, parent);
-                ((TextView) v).setGravity(Gravity.CENTER);
-                return v;
-            }
-
-            public View getDropDownView(int position, View convertView,ViewGroup parent) {
-                View v = super.getDropDownView(position, convertView,parent);
-                ((TextView) v).setGravity(Gravity.CENTER);
-                return v;
-            }
-        };
+        categoryAdapter = new ArrayAdapter<String>(this, R.layout.custom_center_spinner, categoryList);
         categorySpinner.setAdapter(categoryAdapter);
         categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 DBHandler handler = new DBHandler(getBaseContext());
                 songList = handler.getCategoryData(categoryList.get(position));
-                previousSongs.clear();
                 handler.close();
-                songTracker = 0;
-                previousSongs.push(songTracker);
-                setUp();
+                resetGame();
             }
 
             @Override
@@ -90,17 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void play(View view) {
-        if(songController != null) {
-            if (songController.isPlaying()) {
-                try {
-                    songController.stop();
-                    songController.release();
-                    songController = null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        stop();
         songController = MediaPlayer.create(this,songResource);
         int playTime = intervals[intervalTracker];
         songController.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -152,6 +128,20 @@ public class MainActivity extends AppCompatActivity {
         intervalTextView.setText(s);
     }
 
+    public void stop() {
+        if(songController != null) {
+            if (songController.isPlaying()) {
+                try {
+                    songController.stop();
+                    songController.release();
+                    songController = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public void initialSetUp() {
         DBHandler handler = new DBHandler(this);
 
@@ -181,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setUp() {
+        stop();
         intervalTracker = 0;
         String s = Integer.toString(intervals[intervalTracker]);
         if (intervals[intervalTracker] < 10) {
@@ -249,6 +240,15 @@ public class MainActivity extends AppCompatActivity {
         String t2points = team2.toString();
         team1Score.setText(t1points);
         team2Score.setText(t2points);
+        categorySpinner.setSelection(0,true);
+        resetGame();
+    }
+
+    public void resetGame() {
+        previousSongs.clear();
+        songTracker = 0;
+        previousSongs.push(songTracker);
+        setUp();
     }
 
 }
