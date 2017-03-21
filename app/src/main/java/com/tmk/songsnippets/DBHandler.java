@@ -146,12 +146,12 @@ public class DBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        // method override required for extending SQLite database, but not used in this application
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // method override required for extending SQLite database, but not used in this application
     }
 
     // Add your public helper methods to access and get content from the database.
